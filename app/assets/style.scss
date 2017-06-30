@@ -1,3 +1,11 @@
+$font-properties: sans-serif, #fff;
+$standard-border: 4px solid #fff;
+$sides-space: 0px 10%;
+
+@mixin fonts-project ($family,$color) {
+  font-family: $family;
+  color: $color;
+}
 
 @mixin cover-bg-image($file) {
   background: url(#{$file}.jpg) no-repeat center center fixed;
@@ -7,6 +15,42 @@
   background-size: cover;
 }
 
+@mixin container-centered ($height){
+  display:flex;
+  align-items:center;
+  height:$height;
+  text-align: center;
+  margin: $sides-space;
+}
+
 body {
-  @include cover-bg-image('background');
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  @include cover-bg-image('images/background');
+  @include fonts-project($font-properties...);
+}
+
+header {
+  height: 25%;
+  @include container-centered(40%);
+
+  .title-box {
+    color: #fff;
+  }
+}
+
+main {
+  @include container-centered(60%);
+
+  .content {
+    width: 100%;
+    padding: $sides-space;
+    border: $standard-border;
+
+    .answer-box {
+      font-size: 20px;
+      text-align: left;
+    }
+  }
 }
