@@ -1,6 +1,7 @@
 $font-properties: sans-serif, #fff;
 $standard-border: 4px solid #fff;
 $sides-space: 0px 10%;
+$transparency-black: rgba(0, 0, 0, 0.39);
 
 @mixin fonts-project ($family,$color) {
   font-family: $family;
@@ -37,20 +38,56 @@ header {
 
   .title-box {
     color: #fff;
+
+    img{
+      padding: 3% 0px;
+    }
   }
 }
 
 main {
-  @include container-centered(60%);
+  @include container-centered(50%);
 
   .content {
     width: 100%;
-    padding: $sides-space;
+    padding: 2% 5%;
     border: $standard-border;
+    background: $transparency-black;
 
     .answer-box {
       font-size: 20px;
       text-align: left;
+    }
+
+    select {
+      width: 20%;
+      height: 30px;
+      margin: 1% 3%;
+      padding: 0 1%;
+      -webkit-border-radius:4px;
+      -moz-border-radius:4px;
+      border-radius:4px;
+      -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+      -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+      box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+      background: #f8f8f8;
+      color:#888;
+      font-size: 1em;
+      border:none;
+      outline:none;
+      display: inline-block;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      appearance:none;
+      cursor:pointer;
+
+      &:first-child{
+       margin-left: 0px;
+      }
+
+      &:last-child{
+       margin-right: 0px;
+      }
     }
   }
 }
