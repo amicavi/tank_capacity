@@ -18,23 +18,36 @@
           <h1>Ingresa la información de tu vehículo</h1>
           <div class="selects-box">
             <select class="select" name="year"
-              data-bind="options: years,
+              data-bind="
+              options: years,
               value: year,
               optionsCaption: 'Año'">
             </select>
-            <select class="select" data-bind="enable: year" disabled>
-              <option>Marca</option>
+            <select class="select"
+              data-bind="
+              enable: year,
+              value: brand,
+              optionsCaption: 'Marca'"
+              disabled>
               <option>test</option>
               <option>test</option>
               <option>test</option>
             </select>
-            <select class="select" name="model">
+            <select class="select"
+              data-bind="
+              enable: brand,
+              value: model"
+              disabled>
               <option>Modelo</option>
               <option>test</option>
               <option>test</option>
               <option>test</option>
             </select>
-            <select class="select" name="engine">
+            <select class="select"
+              data-bind="
+              enable: model
+              value: engine"
+              disabled>
               <option>Motor</option>
               <option>test</option>
               <option>test</option>
