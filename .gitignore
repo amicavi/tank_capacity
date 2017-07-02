@@ -1,0 +1,5 @@
+# Ignore Craft Storage
+.DS_Store
+
+# Ignore docs files
+.sass-cache
