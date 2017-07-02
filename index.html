@@ -20,38 +20,29 @@
             <select class="select" name="year"
               data-bind="
               options: years,
-              value: year,
+              value: selectedYear,
               optionsCaption: 'Año'">
             </select>
             <select class="select"
               data-bind="
-              enable: year,
-              value: brand,
+              enable: selectedYear,
+              options: brands,
+              value: selectedBrand,
               optionsCaption: 'Marca'"
               disabled>
-              <option>test</option>
-              <option>test</option>
-              <option>test</option>
             </select>
             <select class="select"
               data-bind="
-              enable: brand,
-              value: model"
+              enable: selectedBrand,
+              options: models,
+              value: selectedModel"
               disabled>
-              <option>Modelo</option>
-              <option>test</option>
-              <option>test</option>
-              <option>test</option>
             </select>
             <select class="select"
               data-bind="
-              enable: model
-              value: engine"
+              enable: selectedModel,
+              value: selectedEngine"
               disabled>
-              <option>Motor</option>
-              <option>test</option>
-              <option>test</option>
-              <option>test</option>
             </select>
           </div>
           <div class="answer-box">
