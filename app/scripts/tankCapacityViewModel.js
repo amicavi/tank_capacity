@@ -6,22 +6,31 @@ function tankCapacityViewModel() {
   this.models       = ko.observableArray([]);
   this.engines      = ko.observableArray([]);
   this.tankCapacity = ko.observable();
+  this.vehicle      = ko.observable();
 
   this.selectedYear   = ko.observable();
   this.selectedBrand  = ko.observable();
   this.selectedModel  = ko.observable();
   this.selectedEngine = ko.observable();
 
-  function resetValues (howMany) {
-    if (howMany == 3) {
+  function setVehicle () {
+    console.log(self.selectedBrand() + ", " + self.selectedModel());
+      self.vehicle(self.selectedBrand() + ", " + self.selectedModel());
+  };
+
+  function resetSomeValues (howMany) {
+    if (howMany == 4) {
       self.selectedBrand(null);
       self.selectedModel(null);
       self.selectedEngine(null);
-    } else if (howMany == 2) {
+      self.vehicle(null);
+    } else if (howMany == 3) {
       self.selectedModel(null);
       self.selectedEngine(null);
+      self.vehicle(null);
     } else {
       self.selectedEngine(null);
+      self.vehicle(null);
     }
   };
 
@@ -83,7 +92,7 @@ function tankCapacityViewModel() {
     if (year) {
       getBrands();
     } else {
-      resetValues(3);
+      resetSomeValues(4);
     }
   });
 
@@ -91,15 +100,16 @@ function tankCapacityViewModel() {
     if (brand) {
       getModels();
     } else {
-      resetValues(2);
+      resetSomeValues(3);
     }
   });
 
   self.selectedModel.subscribe(function (model) {
     if (model) {
       getEngines();
+      setVehicle();
     } else {
-      resetValues(1);
+      resetSomeValues(2);
     }
   });
 
