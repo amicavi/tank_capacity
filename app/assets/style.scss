@@ -72,11 +72,6 @@ main {
     border: $standard-border;
     background: $transparency-black;
 
-    .answer-box {
-      font-size: 20px;
-      text-align: left;
-    }
-
     select {
       width: 20%;
       height: 30px;
@@ -106,6 +101,12 @@ main {
         @include box-shadow (0 3px 0 #8e8e8e, 0 -1px #c9c9c9 inset);
         cursor: not-allowed;
       }
+    }
+
+    .answer-box {
+      font-size: 20px;
+      text-align: left;
+      text-transform: capitalize;
     }
   }
 }
