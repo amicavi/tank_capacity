@@ -10,7 +10,6 @@ function requestManager () {
     	  },
         success:function(data){
     	    console.log("getCarYears success");
-        	console.log(data);
           cb(data);
         },
         error: function(e){
@@ -28,7 +27,6 @@ function requestManager () {
     	  },
         success:function(data){
     	    console.log("getCarMakes success");
-        	console.log(data);
           cb(data);
         },
         error: function(e){
@@ -45,8 +43,7 @@ function requestManager () {
       	  "Authorization": "Basic " + btoa("tank_capacity:JT^0s#^X56Bm*M")
     	  },
         success:function(data){
-    	    console.log("getCarMakes success");
-        	console.log(data);
+    	    console.log("getCarModels success");
           cb(data);
         },
         error: function(e){
@@ -54,6 +51,40 @@ function requestManager () {
         }
       });
     };
+
+    self.getCarEngines = function(year, model, make, cb) {
+      $.ajax({
+      	url: 'http://mvp.clonemirefaccion.com/vechicle/fleet/api/engines?access_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiOGYwZWIzZjU5In0.8MNTm8SwVmkeLCR5omERTXzaqtPVnByg0wLcnOYHvBY&year=' + year + '&model=' + model + '&make=' + make,
+        type: "GET",
+        headers: {
+      	  "Authorization": "Basic " + btoa("tank_capacity:JT^0s#^X56Bm*M")
+    	  },
+        success:function(data){
+    	    console.log("getCarEngines success");
+          cb(data);
+        },
+        error: function(e){
+        	console.log(e);
+        }
+      });
+    };
+
+    // self.getCarTankCapacity = function(year, model, make, cb) {
+    //   $.ajax({
+    //   	url: 'http://mvp.clonemirefaccion.com/vechicle/fleet/api/tank-capacity?access_token=eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiOGYwZWIzZjU5In0.8MNTm8SwVmkeLCR5omERTXzaqtPVnByg0wLcnOYHvBY&year=' + year + '&model=' + model + '&make=' + make + '&engine=' + engine,
+    //     type: "GET",
+    //     headers: {
+    //   	  "Authorization": "Basic " + btoa("tank_capacity:JT^0s#^X56Bm*M")
+    // 	  },
+    //     success:function(data){
+    // 	    console.log("getCarMakes success");
+    //       cb(data);
+    //     },
+    //     error: function(e){
+    //     	console.log(e);
+    //     }
+    //   });
+    // };
 
     return self;
 
