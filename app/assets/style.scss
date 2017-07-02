@@ -1,12 +1,10 @@
 $font-properties: sans-serif, #fff;
-$standard-border: 4px solid #fff;
 $sides-space: 0px 10%;
-$transparency-black: rgba(0, 0, 0, 0.39);
-
-@mixin fonts-project ($family,$color) {
-  font-family: $family;
-  color: $color;
-}
+$transparency-black: rgba(45,45,45,.85);
+$font-family: 'Roboto', sans-serif;
+$font-color: #fff;
+$font-weight: 300;
+$font-shadow: 0 1px 2px rgba(0,0,0,.6);
 
 @mixin cover-bg-image($file) {
   background: url(#{$file}.jpg) no-repeat center center fixed;
@@ -16,46 +14,34 @@ $transparency-black: rgba(0, 0, 0, 0.39);
   background-size: cover;
 }
 
-@mixin container-centered ($height) {
-  display:flex;
-  align-items:center;
-  height:$height;
-  text-align: center;
-  margin: $sides-space;
-}
-
-@mixin border-with-radius ($pixels) {
-  -webkit-border-radius: $pixels;
-  -moz-border-radius: $pixels;
-  border-radius: $pixels;
-}
-
-@mixin box-shadow ($offset-x,$offset-y) {
-  -webkit-box-shadow: $offset-x,$offset-y;
-  -moz-box-shadow: $offset-x,$offset-y;
-  box-shadow: $offset-x,$offset-y;
-}
-
-@mixin remove-appearance {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 body {
   height: 100%;
   width: 100%;
   position: absolute;
+  font-family: $font-family;
+  color: $font-color;
   @include cover-bg-image('images/background');
-  @include fonts-project($font-properties...);
 }
 
 header {
-  height: 25%;
-  @include container-centered(40%);
+  height: 40%;
+  font-family: $font-family;
+  color: $font-color;
 
   .title-box {
-    color: #fff;
+    text-shadow: $font-shadow;
+    font-weight: $font-weight;
+    background: none;
+
+    h2 {
+      line-height: 1.5;
+    }
+
+    .fancy-line {
+      border: 0;
+      height: 1px;
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+    }
 
     img{
       padding: 3% 0px;
@@ -64,46 +50,35 @@ header {
 }
 
 main {
-  @include container-centered(50%);
+  height: 60%;
+  // @include container-centered(50%);
 
   .content {
-    width: 100%;
+    font-family: $font-family;
+    color: $font-color;
+    font-weight: $font-weight;
+    text-shadow: $font-shadow;
     padding: 2% 5%;
-    border: $standard-border;
+    border-radius: 8px;
     background: $transparency-black;
 
+    h3 {
+      margin-bottom: 3%;
+      font-weight: 300;
+    }
+
     select {
-      width: 20%;
-      height: 30px;
-      margin: 1% 3%;
-      padding: 0 1%;
-      background: #f8f8f8;
-      color:#888;
-      font-size: 1em;
-      border:none;
-      outline:none;
-      display: inline-block;
-      cursor:pointer;
-      @include remove-appearance;
-      @include border-with-radius(4px);
-      @include box-shadow (0 3px 0 #ccc, 0 -1px #fff inset);
-
-      &:first-child{
-       margin-left: 0px;
-      }
-
-      &:last-child{
-       margin-right: 0px;
-      }
+      margin: 10px 0px;
+      height: 35px;
+      font-weight: 500;
 
       &:disabled {
-        background: #b5b5b5;
-        @include box-shadow (0 3px 0 #8e8e8e, 0 -1px #c9c9c9 inset);
-        cursor: not-allowed;
+        color: rgba(85, 85, 85, 0.42);
       }
     }
 
     .answer-box {
+      margin-top: 3%;
       font-size: 20px;
       text-align: left;
       text-transform: capitalize;
