@@ -19,18 +19,21 @@ function tankCapacityViewModel() {
   };
 
   function resetSomeValues (howMany) {
-    if (howMany == 4) {
+    if (howMany == 5) {
       self.selectedBrand(null);
       self.selectedModel(null);
       self.selectedEngine(null);
       self.vehicle(null);
-    } else if (howMany == 3) {
+      self.tankCapacity(null);
+    } else if (howMany == 4) {
       self.selectedModel(null);
       self.selectedEngine(null);
       self.vehicle(null);
+      self.tankCapacity(null);
     } else {
       self.selectedEngine(null);
       self.vehicle(null);
+      self.tankCapacity(null);
     }
   };
 
@@ -75,16 +78,21 @@ function tankCapacityViewModel() {
         allOptions.push(element.cylinders + ' cilindros');
       }
     });
+    console.log(allOptions);
     self.engines(allOptions);
   };
 
-  function getTankCapacity(){
+  function getTankCapacity(engine){
     var year   = self.selectedYear();
     var model  = self.selectedModel();
     var brand  = self.selectedBrand();
-    var engine = self.selectedEngine();
-    requestManager().getCarTankCapacity(year, model, brand, engine, function (capacity) {
-      self.tankCapacity(capacity);
+    requestManager().getCarTankCapacity(year, model, brand, engine, function (res) {
+      console.log(res);
+      if (res == 'error') {
+        self.tankCapacity('No se encontró información de este vehículo');
+      } else {
+        self.tankCapacity(res.capacity + ' lts.');
+      }
     });
   };
 
@@ -92,7 +100,7 @@ function tankCapacityViewModel() {
     if (year) {
       getBrands();
     } else {
-      resetSomeValues(4);
+      resetSomeValues(5);
     }
   });
 
@@ -100,16 +108,24 @@ function tankCapacityViewModel() {
     if (brand) {
       getModels();
     } else {
-      resetSomeValues(3);
+      resetSomeValues(4);
     }
   });
 
   self.selectedModel.subscribe(function (model) {
     if (model) {
       getEngines();
-      setVehicle();
     } else {
-      resetSomeValues(2);
+      resetSomeValues(3);
+    }
+  });
+
+  self.selectedEngine.subscribe(function (engine) {
+    console.log('selectedEngine',engine);
+    if (engine) {
+      var onlyEngine = engine.replace(' cilindros ','+').replace(' litros', '');
+      getTankCapacity(onlyEngine);
+      setVehicle();
     }
   });
 
