@@ -20,7 +20,7 @@ body {
   position: absolute;
   font-family: $font-family;
   color: $font-color;
-  @include cover-bg-image('images/background');
+  @include cover-bg-image('../images/background');
 }
 
 header {

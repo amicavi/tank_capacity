@@ -4,7 +4,7 @@ body {
   position: absolute;
   font-family: "Roboto", sans-serif;
   color: #fff;
-  background: url(images/background.jpg) no-repeat center center fixed;
+  background: url(../images/background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -53,5 +53,3 @@ main {
       font-size: 20px;
       text-align: left;
       text-transform: capitalize; }
-
-/*# sourceMappingURL=style.css.map */
